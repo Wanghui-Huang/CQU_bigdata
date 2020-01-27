@@ -1,7 +1,7 @@
 # 忽略所有Experiment下所有md文件
 # 两个**代表任意多层上级文件夹
 Experiment/**/*.md
-# 忽略SRC文件下所有文件
-SRC/
+# 忽略当前目录下SRC文件
+/SRC
 # 忽略所有已经完成实验的结果
 Experiment/**/*.png
