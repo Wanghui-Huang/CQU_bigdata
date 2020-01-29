@@ -621,7 +621,7 @@ ssh localhost   # 保证两台服务器都可以本地无密码登陆
 
 2. 修改文件 `slaves` 
 
-   master主机作为`NameNode` ，而 slave01、slave02 作为 `DataNode`
+   master主机作为`NameNode` ，而 slave01 作为 `DataNode`
 
    ```bash
    vim slaves
@@ -666,6 +666,14 @@ ssh localhost   # 保证两台服务器都可以本地无密码登陆
        <property>
            <name>dfs.replication</name>
            <value>3</value>
+       </property>
+       <property>
+           <name>mapred.job.tracker</name>
+           <value>master:9001</value>
+       </property>
+       <property>
+           <name>dfs.namenode.http-address</name>
+           <value>master:50070</value>
        </property>
      </configuration>
    ```
@@ -774,7 +782,7 @@ ssh localhost   # 保证两台服务器都可以本地无密码登陆
 
      ![1579789502573](C:/Users/86151/AppData/Roaming/Typora/typora-user-images/1579789502573.png)
 
-   - 分别在 slave01、slave02上 
+   - 在 slave01上 
 
      ```
      jps
@@ -1363,12 +1371,25 @@ sbin/stop-all.sh      # 关闭集群
          </property>
          <property>
              <name>fs.defaultFS</name>
-             <value>hdfs://localhost:9000</value>
+             <value>hdfs://0.0.0.0:9000</value>
          </property>
      </configuration>
    ```
 
-   ![1575551770594](C:\Users\86151\AppData\Roaming\Typora\typora-user-images\/1575551770594.png)
+   :warning: 实际测试必须要 `hdfs://0.0.0.0:9000` 才能使用 `hdfs` 服务。
+
+   :warning: 有可能依旧报错：`Error JAVA_HOME is not set and could not be found` -
+
+   - 配置`hadoop-env.sh` 
+
+     ```bash
+     cd /usr/local/hadoop/etc/hadoop
+     vim hadoop-env.sh
+     ```
+
+     配置 `JAVA_HOME` 路径如下：
+
+     ![1580121482205](C:/Users/86151/AppData/Roaming/Typora/typora-user-images/1580121482205.png)
 
 3. 修改`hdfs-site.xml` ：
 

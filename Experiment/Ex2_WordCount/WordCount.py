@@ -52,12 +52,16 @@ def wordcount(isvisualize=False):
     # wordcount：去除停用词等同时对最后结果按词频进行排序
     # 完成SparkRDD操作进行词频统计
     # 提示：你应该依次使用
-    #      1.filter函数进行停用词过滤、去除长度=1的词汇
+    #      1.filter函数分别进行停用词过滤、去除长度=1的词汇
     #      2.map进行映射，如['a','b','a'] --> [('a',1),('b',1),('a',1)]
     #      3.reduceByKey相同key进行合并 [('a',2),('b',1)]
     #      4.sortBy进行排序，注意应该是降序排序
     #【现在你应该完成下面函数编码】
-    resRdd =
+    resRdd = wordsRdd.filter(lambda word: ) \
+                     .filter(lambda word: )\
+                     .map(lambda word: ) \
+                     .reduceByKey(lambda a, b: ) \
+                     .sortBy(ascending=False, numPartitions=None, keyfunc=lambda x: x[1]) \
 
     # resRdd = wordsRdd.filter(lambda word: len(word)>1) \
     #                  .filter(lambda word: word not in stopwords)\
