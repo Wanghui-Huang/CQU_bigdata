@@ -794,9 +794,9 @@ ssh localhost   # 保证两台服务器都可以本地无密码登陆
 
 ##### 常见问题汇总
 
-***Q1: 解决slave节点没有 DataNode 进程  OR master节点没有 namenode进程***  ？
+> `Q1`:  `slave`节点没有 `DataNode` 进程  /  `master`节点没有 `namenode` 进程 ？
 
-***A1*** : 这个问题一般是由于在启动集群多次执行格式化命令：
+这个问题一般是由于在启动集群多次执行格式化命令：
 
 ```bash
 bin/hdfs namenode -format
@@ -829,7 +829,7 @@ sbin/stop-all.sh      # 关闭集群
 - *在master节点删除 `tmp`* 
 
   ```bash
-  cd /usr/local/hadoop 
+  cd /usr/local 
   rm -rf ./hadoop/tmp 
   ```
 
@@ -864,6 +864,70 @@ sbin/stop-all.sh      # 关闭集群
   ![1575942873563](C:\Users\86151\AppData\Roaming\Typora\typora-user-images\/1575942873563.png)
 
   *ok~* 
+
+> `Q2`：启动集群后发现，`Slave` 节点没有 `NodeManager`进程
+>
+> ![1580466394703](C:/Users/86151/AppData/Roaming/Typora/typora-user-images/1580466394703.png)
+>
+> :warning: 建议先尝试 `Q1` 方法，一般能解决大部分问题。
+
+启动集群时可以知道，启动 `slave01` 节点 `notemanager` 进程相关日志在（最后不是`.out`是`.log`） ：
+
+`/usr/local/hadoop/logs/yarn-hadoop-nodemanager-slave01.log`
+
+![1580466585098](C:/Users/86151/AppData/Roaming/Typora/typora-user-images/1580466585098.png)
+
+1. 查看日志
+
+   在 `slave01` 节点下
+
+   ```bash
+   vim /usr/local/hadoop/logs/yarn-hadoop-nodemanager-slave01.log
+   ```
+
+   日志太多，我们在`命令模式`下，输入 `:$` ，直接跳到最后一行：
+
+   ![1580467310994](C:/Users/86151/AppData/Roaming/Typora/typora-user-images/1580467310994.png)
+
+   - 很显然，显示端口`8040`被占用
+
+2. 查看谁占用`8040`端口
+
+   ```bash
+   netstat -tln | grep 8040
+   ```
+
+   ![1580467453929](C:/Users/86151/AppData/Roaming/Typora/typora-user-images/1580467453929.png)
+
+   果然`8040` 端口已经被占用
+
+3. 释放端口
+
+   ```bash
+   lsof -i :8040  # 查询占用8040端口进程pid
+   ```
+
+   ![1580467535705](C:/Users/86151/AppData/Roaming/Typora/typora-user-images/1580467535705.png)
+
+   杀死相应进程：
+
+   ```bash
+   kill -9 16961
+   ```
+
+4. 测试
+
+   重新启动集群
+
+   ```bash
+   cd /usr/local/hadoop
+   sbin/stop-all.sh
+   sbin/start-all.sh
+   ```
+
+   再次输入 `jps`命令，发现 `slave01` 节点 `NodeManager` 进程已经出现！
+
+   ![1580467671457](C:/Users/86151/AppData/Roaming/Typora/typora-user-images/1580467671457.png)
 
 #### 2.2.3 Spark集群配置
 

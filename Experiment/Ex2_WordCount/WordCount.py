@@ -28,7 +28,7 @@ def jiebaCut(answers_filePath):
     # 利用SpardRDD reduce()函数,合并所有回答
     # 【现在你应该完成下面函数编码】
     # str = answersRdd.reduce(lambda a, b: a + b)
-    str =
+    str = answersRdd.reduce(lambda  )
 
     # jieba分词
     words_list = jieba.lcut(str)
