@@ -1,9 +1,13 @@
-# 忽略所有Experiment下所有md文件
 # 两个**代表任意多层上级文件夹
+# 忽略所有Experiment下所有md文件、idea
 Experiment/**/*.md
 Experiment/**/*.idea
 Experiment/**/*.csv
-# 忽略当前目录下SRC文件
-/SRC
 # 忽略所有已经完成实验的结果
 Experiment/**/*.png
+# 忽略所有PPT素材
+PPT/**/src/*.ppt
+PPT/**/src/*.pptx
+PPT/**/src/*.pdf
+# 忽略当前目录下SRC文件
+/SRC
