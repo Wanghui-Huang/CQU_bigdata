@@ -6,8 +6,6 @@ Experiment/**/*.csv
 # 忽略所有已经完成实验的结果
 Experiment/**/*.png
 # 忽略所有PPT素材
-PPT/**/src/*.ppt
-PPT/**/src/*.pptx
-PPT/**/src/*.pdf
+PPT/**/src
 # 忽略当前目录下SRC文件
 /SRC
