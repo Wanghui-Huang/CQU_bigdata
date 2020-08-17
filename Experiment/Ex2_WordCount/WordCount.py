@@ -27,7 +27,7 @@ def jiebaCut(answers_filePath):
 
     # 利用SpardRDD reduce()函数,合并所有回答
     # 【现在你应该完成下面函数编码】
-    # str = answersRdd.reduce(lambda a, b: a + b)
+
     str = answersRdd.reduce(lambda  )
 
     # jieba分词
@@ -63,13 +63,7 @@ def wordcount(isvisualize=False):
                      .reduceByKey(lambda a, b: ) \
                      .sortBy(ascending=False, numPartitions=None, keyfunc=lambda x: x[1]) \
 
-    # resRdd = wordsRdd.filter(lambda word: len(word)>1) \
-    #                  .filter(lambda word: word not in stopwords)\
-    #                  .map(lambda word: (word, 1)) \
-    #                  .reduceByKey(lambda a, b: a + b) \
-    #                  .sortBy(ascending=False, numPartitions=None, keyfunc=lambda x: x[1]) \
-    #                  #.collect()
-    #                  # .foreach(lambda k,v : words_dic[k]=v) # lambda 不允许赋值
+    
 
     # 可视化展示
     if isvisualize:

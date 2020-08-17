@@ -31,7 +31,7 @@ class Kmeans:
                           .setPredictionCol('prediction')\
                           .fit(dataDF)
             # 【完成以下编码】计算损失
-            # costk = kmeansModel.computeCost(dataDF)
+
             costk =
             costs.append(costk)
 
@@ -61,8 +61,6 @@ class Kmeans:
         # 2.利用DataFrame中collect方法转换DateFrame --> python list
         # 【现在完成以下编码】
 
-        # resDF = kmeansModel.transform(dataDF).select('features', 'prediction')
-        # resList = resDF.collect()
         resDF =
         resList =
         # 打印部分聚类结果

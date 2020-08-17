@@ -46,27 +46,25 @@ def predict(Iterations=1000,threshold=-90000):
     # 【完成下面代码缺失处】
 
     # 1.读取数据
-    # train_data = sc.textFile(TRAINDATAPATH)
-    # test_data = sc.textFile(TESTDATAPATH)
+
     train_data = sc.textFile( )
     test_data = sc.textFile( )
 
     # 2.数据标准化
-    # train = train_data.map(lambda line: GetParts(line))
-    # test = test_data.map(lambda line: GetParts(line))
+
     train = train_data.map(lambda line: )
     test = test_data.map(lambda line: )
 
     # 3.构建模型
-    # model = SVMWithSGD.train(train, Iterations)  # 默认迭代1000次
+
     model =   # 默认迭代1000次
 
     # 4.评估模型
     model.setThreshold(threshold)  # 默认阈值 -90000
-    # scoreAndLabels = test.map(lambda point: Getpoint(model,point))
+
     scoreAndLabels = test.map(lambda point:  )
     # 计算精度
-    # accuracy = scoreAndLabels.filter(lambda l:float(l[0]) == float(l[1])).count() / test.count()
+
     accuracy = scoreAndLabels.filter(lambda l:  ).count() / test.count()
 
     return accuracy

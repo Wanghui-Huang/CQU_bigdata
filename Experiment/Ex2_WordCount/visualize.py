@@ -34,10 +34,7 @@ class visualize:
 
 
 
-            # if K < topK:
-            #     wordDicK[key] = value
-            #     K = K+1
-            # else: break
+
         return wordDicK
 
     def drawWorcCloud(self, wordDic):

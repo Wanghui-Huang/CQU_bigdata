@@ -27,7 +27,7 @@ def getDF():
     # 读取数据
     # 利用filter操作过滤掉空数据,如：[['1'],['2'],['']] --> [['1'],['2']]
     # 现在你需要【完成以下编码】
-    # rawData = sc.textFile(DATAPATH).filter(lambda ele: ele != '')
+
     rawData = sc.textFile(DATAPATH).filter(lambda ele: )
 
     # 转换为DataFrame
@@ -35,9 +35,7 @@ def getDF():
     # 1.map 将RDD每一行数据以逗号‘，’分隔
     # 2.map RDD每一行转换为Row
 
-    # dataDF = rawData.map(lambda line: line.split(',')) \
-    #                 .map(lambda p: Row(**f(p))) \
-    #                 .toDF()
+
     dataDF = rawData.map(lambda line: )\
                     .map(lambda p: )\
                     .toDF()
