@@ -83,7 +83,7 @@
    腾讯云服务器启动图形界面：
 
    ```bash
-startx # 进入图形界面
+startx # 启动图形界面
    ```
    
    ![1579752349514](https://i.loli.net/2020/09/17/Kv96Mfm5epgHT4X.png)
