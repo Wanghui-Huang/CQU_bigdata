@@ -78,13 +78,13 @@
 
 3. 启动图形界面
 
-   > 如果阿里云无法启动图形界面，请参考issue#2 ：[2.2.2节-获取桌面环境失败](https://github.com/Wanghui-Huang/CQU_bigdata/issues/2)
+   > 如果阿里云无法启动图形界面，请参考`issue#2` ：[2.2.2节-获取桌面环境失败](https://github.com/Wanghui-Huang/CQU_bigdata/issues/2)
    
+   腾讯云服务器启动图形界面：
+
    ```bash
 startx # 进入图形界面
    ```
-
-   一切顺利，你应该看到下面图形界面：
    
    ![1579752349514](https://i.loli.net/2020/09/17/Kv96Mfm5epgHT4X.png)
 
