@@ -60,6 +60,8 @@
 
 #### 2.1.2 可视化界面
 
+> 如果阿里云无法启动图形界面，请参考`issue#2` ：[2.2.2节-获取桌面环境失败](https://github.com/Wanghui-Huang/CQU_bigdata/issues/2)
+
 考虑到此前大部分同学没有接触过Linux，不适应命令行环境。因此该小节将展示如何搭建Linux（`CentOS 7`）桌面环境。
 
 1. 选择VNC登陆
@@ -78,17 +80,13 @@
 
 3. 启动图形界面
 
-   > 如果阿里云无法启动图形界面，请参考`issue#2` ：[2.2.2节-获取桌面环境失败](https://github.com/Wanghui-Huang/CQU_bigdata/issues/2)
-   
    腾讯云服务器启动图形界面：
-
+   
    ```bash
 startx # 启动图形界面
    ```
-   
+
    ![1579752349514](https://i.loli.net/2020/09/17/Kv96Mfm5epgHT4X.png)
-
-
 
 ### 2.2 云下Linux
 
