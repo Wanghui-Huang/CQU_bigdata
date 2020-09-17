@@ -429,15 +429,15 @@
 
   编辑修改为：`master`
 
-- 分别在 slave01
+- 在 slave01
 
   ```bash
   sudo vim /etc/hostname
   ```
 
-  分别编辑修改为：`slave01 ` 、`slave02`
+  编辑修改为：`slave01 ` 
 
-*最后使用命令 `sudo reboot`重启*，便会生效。
+最后使用命令 `sudo reboot`重启，便会生效。
 
 ##### 2 修改host
 
