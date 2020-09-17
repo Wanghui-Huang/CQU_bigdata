@@ -139,8 +139,10 @@ startx # 启动图形界面
    >
    > 如，张三：`zs4321`
 
-   `vim /etc/hostname`
-   
+   ```bash
+   vim /etc/hostname
+   ```
+
    按下 `i` 进入插入模式，删除所有内容，然后编辑你的主机名：
 
    ![1580876113648](https://i.loli.net/2020/09/17/1FuE6tgQXi7ozLv.png)
@@ -149,9 +151,7 @@ startx # 启动图形界面
 
    最后重启服务器：
 
-   ```bash
-reboot
-   ```
+   `reboot`
    
    等待约1分钟左右，重新连接可发现主机名已经被修改。
 
