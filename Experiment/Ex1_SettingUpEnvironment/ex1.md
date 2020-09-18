@@ -643,42 +643,49 @@ ssh localhost   # 保证两台服务器都可以本地无密码登陆
 
 > 当然你也可以尝试在slave节点上重复一遍master节点上的配置，而非通过传送文件。
 
-方法一：通过scp将上述变动文件发送至slave（可以大幅度减少传送时间）
+**:black_flag: 方法1：**通过scp将上述变动文件发送至slave（可以大幅度减少传送时间）
 
-在master上，使用如下命令将yarn-site.xml等发送到从机上。
+1. 传送已修改的配置文件
 
-```shell
-# on master
-scp /usr/local/hadoop/etc/hadoop/core-site.xml hadoop@slave01:/usr/local/hadoop/etc/hadoop/
-scp /usr/local/hadoop/etc/hadoop/hdfs-site.xml hadoop@slave01:/usr/local/hadoop/etc/hadoop/
-scp /usr/local/hadoop/etc/hadoop/mapred-site.xml hadoop@slave01:/usr/local/hadoop/etc/hadoop/
-scp /usr/local/hadoop/etc/hadoop/yarn-site.xml hadoop@slave01:/usr/local/hadoop/etc/hadoop/
-```
+   在master上节点上，使用如下命令将yarn-site.xml等发送到从机上。
 
-之后通过cat命令检查slave上的相关文件是否变更。
+   ```shell
+   # on master
+   scp /usr/local/hadoop/etc/hadoop/core-site.xml hadoop@slave01:/usr/local/hadoop/etc/hadoop/
+   scp /usr/local/hadoop/etc/hadoop/hdfs-site.xml hadoop@slave01:/usr/local/hadoop/etc/hadoop/
+   scp /usr/local/hadoop/etc/hadoop/mapred-site.xml hadoop@slave01:/usr/local/hadoop/etc/hadoop/
+   scp /usr/local/hadoop/etc/hadoop/yarn-site.xml hadoop@slave01:/usr/local/hadoop/etc/hadoop/
+   ```
 
-```shell
-# on slave
-cat /usr/local/hadoop/etc/hadoop/core-site.xml    # 确认文件是否传送正确
-```
 
-如果输出中含有上一步中修改后的信息，则确认正确，比如core-site.xml文件输出如下。
+2. 检查文件变更
 
-> <!-- Put site-specific property overrides in this file. -->
->
-> <configuration>
->     <property>
-> 	<name>hadoop.tmp.dir</name>
-> 	<value>/usr/local/hadoop/tmp</value>
-> 	<description>Abase for other temporary directories.</description>
->     </property>
->     <property>
-> 	<name>fs.defaultFS</name>
->         <value>hdfs://master:9000</value>
->     </property>
-> </configuration>
+   通过cat命令检查slave上的相关文件是否变更。
 
-方法2: 压缩拷贝整个hadoop目录
+   ```shell
+   # on slave
+   cat /usr/local/hadoop/etc/hadoop/core-site.xml    # 确认文件是否传送正确
+   ```
+
+   输出中含有上一步中修改后的信息，则确认正确。比如，`core-site.xml`文件输出如下：
+
+   ```bash
+   <!-- Put site-specific property overrides in this file. -->
+   
+   <configuration>
+    <property>
+   	<name>hadoop.tmp.dir</name>
+   	<value>/usr/local/hadoop/tmp</value>
+   	<description>Abase for other temporary directories.</description>
+    </property>
+    <property>
+   	<name>fs.defaultFS</name>
+        <value>hdfs://master:9000</value>
+    </property>
+   </configuration>
+   ```
+
+**:black_flag: 方法2：** 压缩拷贝整个hadoop目录
 
 - 在master节点上执行
 
