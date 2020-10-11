@@ -413,6 +413,10 @@ if __name__ == '__main__':
    bin/spark-submit /home/hadoop/Experiment/Ex2_WordCount/WordCount.py
    ```
 
+   > 如果出现可视化错误，`selenium. common. exception. webdriver exception: message: chrome not reachable` 
+   >
+   > 通常是因为chromedriver程序占用了端口，控制台登陆重启服务器即可。相关讨论可见 [issue#5 @lympassion](https://github.com/Wanghui-Huang/CQU_bigdata/issues/5)
+
 3. 查看结果
 
    查看目录 `/home/hadoop/Experiment/Ex2_WordCount/results` ：

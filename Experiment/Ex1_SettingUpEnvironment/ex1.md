@@ -264,8 +264,10 @@
 
 1. 下载
 
+   > 为防止证书验证出现的下载错误，加上 `--no-check-certificate` ，相关讨论可见 [issue#1](https://github.com/Wanghui-Huang/CQU_bigdata/issues/1)
+
    ```bash
-   sudo wget -O hadoop-2.8.5.tar.gz https://mirrors.cnnic.cn/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
+   sudo wget -O hadoop-2.8.5.tar.gz https://mirrors.cnnic.cn/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz  --no-check-certificate 
    ```
 
    - `wget -O <指定下载文件名> <下载地址>` 
@@ -314,7 +316,7 @@
    > 注意，版本号可能发生变化，建议打开上述官网链接查看当前存在的版本。如我查看到只支持`2.4.7`版本（2020/09/17），那么需修改下面版本号：`2.4.4-->2.4.7`
 
    ```bash
-   sudo wget -O spark-2.4.4-bin-without-hadoop.tgz http://mirrors.tuna.tsinghua.edu.cn/apache/spark/spark-2.4.4/spark-2.4.4-bin-without-hadoop.tgz
+   sudo wget -O spark-2.4.7-bin-without-hadoop.tgz http://mirrors.tuna.tsinghua.edu.cn/apache/spark/spark-2.4.7/spark-2.4.7-bin-without-hadoop.tgz   # 版本号发生变化，记得替换，下同
    ```
 
 2. 解压
@@ -322,14 +324,14 @@
    同前解压到 `/usr/local` 目录下
 
    ```bash
-   sudo tar -zxf spark-2.4.4-bin-without-hadoop.tgz -C /usr/local
+   sudo tar -zxf spark-2.4.7-bin-without-hadoop.tgz -C /usr/local
    ```
 
 3. 设置权限
 
    ```bash
    cd /usr/local   # 切换到解压目录
-   sudo mv ./spark-2.4.4-bin-without-hadoop ./spark  # 重命名解压文件
+   sudo mv ./spark-2.4.7-bin-without-hadoop ./spark  # 重命名解压文件
    sudo chown -R hadoop:hadoop ./spark  # 设置用户hadoop为目录spark拥有者
    ```
 
@@ -992,8 +994,28 @@ sbin/stop-all.sh      # 关闭集群
 
    在浏览器上输入：`master:8080` ，如果出现下面界面则表示 *Hadoop+Spark* 分布式环境搭建成功！
 
+   > 如果前面一切正常，Web UI 却无法正常正常显示worker，请尝试：
+>
+   > 1. 参考 [issue#3 @trevery](https://github.com/Wanghui-Huang/CQU_bigdata/issues/3) 
+   >
+   >    - 关闭集群，重启启动集群，执行如下start-slave命令并输入相关参数( 不是运行start-slaves.sh) 
+   >
+   >      ```bash
+   >      sbin/start-slave.sh spark://localhost:7077
+   >      ```
+   >
+   >    - 或者将localhost换成内网ip（不一定可行）
+   >
+   >      ```bash
+   >      sbin/start-slave.sh spark://<master内网ip>:7077  # 替换<master内网ip> 为你的master内网ip
+   >      ```
+   >
+   > 2. 参考 [issue#8 @iDream-G](https://github.com/Wanghui-Huang/CQU_bigdata/issues/8) 
+   >
+   >    - 配置 `spark-env.sh ` 文件 `SPARK_MASTER_IP` 为公网ip。（:warning: 不推荐，仅参考）
+   
    ![1579791486348](https://i.loli.net/2020/09/17/d5FtHEDyn9wUmrq.png)
-
+   
     :tada: :tada: ​ 聪明如你终于做到这步了，第一个实验完结，撒花 :tada:  :tada: 
 
 
@@ -1223,8 +1245,10 @@ sbin/stop-all.sh      # 关闭集群
 
 1. 下载
 
+   > 为防止证书验证出现的下载错误，加上 `--no-check-certificate` ，相关讨论可见 [issue#1](https://github.com/Wanghui-Huang/CQU_bigdata/issues/1)
+
    ```bash
-   sudo wget -O hadoop-2.8.5.tar.gz https://mirrors.cnnic.cn/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
+   sudo wget -O hadoop-2.8.5.tar.gz https://mirrors.cnnic.cn/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz  --no-check-certificate 
    ```
 
    - `wget -O <指定下载文件名> <下载地址>` 
@@ -1273,7 +1297,7 @@ sbin/stop-all.sh      # 关闭集群
    > 注意，版本号可能发生变化，建议打开上述官网链接查看当前存在的版本。如我查看到只支持`2.4.7`版本（2020/09/17），那么需修改下面版本号：`2.4.4-->2.4.7`
 
    ```bash
-   sudo wget -O spark-2.4.4-bin-without-hadoop.tgz http://mirrors.tuna.tsinghua.edu.cn/apache/spark/spark-2.4.4/spark-2.4.4-bin-without-hadoop.tgz
+   sudo wget -O spark-2.4.7-bin-without-hadoop.tgz http://mirrors.tuna.tsinghua.edu.cn/apache/spark/spark-2.4.7/spark-2.4.7-bin-without-hadoop.tgz  # 版本号发生变化记得替换，下同
    ```
 
 2. 解压
@@ -1281,14 +1305,14 @@ sbin/stop-all.sh      # 关闭集群
    同前解压到 `/usr/local` 目录下
 
    ```bash
-   sudo tar -zxf spark-2.4.4-bin-without-hadoop.tgz -C /usr/local
+   sudo tar -zxf spark-2.4.7-bin-without-hadoop.tgz -C /usr/local
    ```
 
 3. 设置权限
 
    ```bash
    cd /usr/local   # 切换到解压目录
-   sudo mv ./spark-2.4.4-bin-without-hadoop ./spark  # 重命名解压文件
+   sudo mv ./spark-2.4.7-bin-without-hadoop ./spark  # 重命名解压文件
    sudo chown -R hadoop:hadoop ./spark  # 设置用户hadoop为目录spark拥有者
    ```
 
@@ -1524,7 +1548,27 @@ sbin/stop-all.sh      # 关闭集群
 
    在浏览器上输入：`localhost:8080` ，如果出现下面界面则表示 *Hadoop+Spark* 分布式环境搭建成功！
 
+   > 如果前面一切正常，Web UI 却无法正常正常显示worker，请尝试：
+>
+   > 1. 参考 [issue#3 @trevery](https://github.com/Wanghui-Huang/CQU_bigdata/issues/3) 
+   >
+   >    - 关闭集群，重启启动集群，执行如下start-slave命令并输入相关参数( 不是运行start-slaves.sh) 
+   >
+   >      ```bash
+   >      sbin/start-slave.sh spark://localhost:7077
+   >      ```
+   >
+   >    - 或者将localhost换成内网ip（不一定可行）
+   >
+   >      ```bash
+   >      sbin/start-slave.sh spark://<master内网ip>:7077  # 替换<master内网ip> 为你的master内网ip
+   >      ```
+   >
+   > 2. 参考 [issue#8 @iDream-G](https://github.com/Wanghui-Huang/CQU_bigdata/issues/8) 
+   >
+   >    - 配置 `spark-env.sh ` 文件 `SPARK_MASTER_IP` 为公网ip。（:warning: 不推荐，仅参考）
+   
    ![1579851180346](https://i.loli.net/2020/09/17/lW8tENR295OqApb.png)
-
+   
     :tada: :tada: ​ 聪明如你终于做到这步了，第一个实验完结，撒花 :tada:  :tada: 
 
