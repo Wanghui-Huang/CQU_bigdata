@@ -994,8 +994,10 @@ sbin/stop-all.sh      # 关闭集群
 
    在浏览器上输入：`master:8080` ，如果出现下面界面则表示 *Hadoop+Spark* 分布式环境搭建成功！
 
+   ![1579791486348](https://i.loli.net/2020/09/17/d5FtHEDyn9wUmrq.png)
+   
    > 如果前面一切正常，Web UI 却无法正常正常显示worker，请尝试：
->
+   >
    > 1. 参考 [issue#3 @trevery](https://github.com/Wanghui-Huang/CQU_bigdata/issues/3) 
    >
    >    - 关闭集群，重启启动集群，执行如下start-slave命令并输入相关参数( 不是运行start-slaves.sh) 
@@ -1014,12 +1016,7 @@ sbin/stop-all.sh      # 关闭集群
    >
    >    - 配置 `spark-env.sh ` 文件 `SPARK_MASTER_IP` 为公网ip。（:warning: 不推荐，仅参考）
    
-   ![1579791486348](https://i.loli.net/2020/09/17/d5FtHEDyn9wUmrq.png)
-   
-    :tada: :tada: ​ 聪明如你终于做到这步了，第一个实验完结，撒花 :tada:  :tada: 
-
-
-
+   :tada: :tada:  聪明如你终于做到这步了，第一个实验完结，撒花 :tada:  :tada: 
 ## 4 伪分布式搭建
 
 > :slightly_smiling_face: 选择伪分布式搭建的同学，**每一个组员**都需要在各自服务器上**独立完成**环境搭建。
@@ -1546,10 +1543,12 @@ sbin/stop-all.sh      # 关闭集群
 
 3. web UI查看
 
-   在浏览器上输入：`localhost:8080` ，如果出现下面界面则表示 *Hadoop+Spark* 分布式环境搭建成功！
+   在浏览器上输入：`master:8080` ，如果出现下面界面则表示 *Hadoop+Spark* 分布式环境搭建成功！
 
+   ![1579791486348](https://i.loli.net/2020/09/17/d5FtHEDyn9wUmrq.png)
+   
    > 如果前面一切正常，Web UI 却无法正常正常显示worker，请尝试：
->
+   >
    > 1. 参考 [issue#3 @trevery](https://github.com/Wanghui-Huang/CQU_bigdata/issues/3) 
    >
    >    - 关闭集群，重启启动集群，执行如下start-slave命令并输入相关参数( 不是运行start-slaves.sh) 
@@ -1568,7 +1567,4 @@ sbin/stop-all.sh      # 关闭集群
    >
    >    - 配置 `spark-env.sh ` 文件 `SPARK_MASTER_IP` 为公网ip。（:warning: 不推荐，仅参考）
    
-   ![1579851180346](https://i.loli.net/2020/09/17/lW8tENR295OqApb.png)
-   
-    :tada: :tada: ​ 聪明如你终于做到这步了，第一个实验完结，撒花 :tada:  :tada: 
-
+   :tada: :tada:  聪明如你终于做到这步了，第一个实验完结，撒花 :tada:  :tada: 
