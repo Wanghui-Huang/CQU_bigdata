@@ -872,7 +872,7 @@ sbin/stop-all.sh      # 关闭集群
 3. 释放端口
 
    ```bash
-   lsof -i :8040  # 查询占用8040端口进程pid
+   sudo lsof -i :8040  # 查询占用8040端口进程pid
    ```
 
    ![1580467535705](https://i.loli.net/2020/09/17/LDlM1CctV5jTNxR.png)
@@ -880,7 +880,7 @@ sbin/stop-all.sh      # 关闭集群
    杀死相应进程：
 
    ```bash
-   kill -9 16961
+   sudo kill -9 16961
    ```
 
 4. 测试
@@ -992,30 +992,28 @@ sbin/stop-all.sh      # 关闭集群
 
 4. web UI查看
 
-   在浏览器上输入：`master:8080` ，如果出现下面界面则表示 *Hadoop+Spark* 分布式环境搭建成功！
+   打开腾讯云控制台，选择`VNC`登陆服务器，在浏览器上输入：`master:8080` 。
+
+   如果出现下面界面则表示 *Hadoop+Spark* 分布式环境搭建成功！
 
    ![1579791486348](https://i.loli.net/2020/09/17/d5FtHEDyn9wUmrq.png)
-   
-   > 如果前面一切正常，Web UI 却无法正常正常显示worker，请尝试：
+
+   > :warning: 如果前面一切正常，Web UI 却无法正常正常显示worker。
    >
-   > 1. 参考 [issue#3 @trevery](https://github.com/Wanghui-Huang/CQU_bigdata/issues/3) 
+   > 查看slave节点相关`spark`日志发现报错：无法访问`<master外网ip>:7070` ，多次连接失败。请尝试：
    >
-   >    - 关闭集群，重启启动集群，执行如下start-slave命令并输入相关参数( 不是运行start-slaves.sh) 
+   > - 关闭集群，重启启动集群，执行如下命令
    >
-   >      ```bash
-   >      sbin/start-slave.sh spark://localhost:7077
-   >      ```
+   >   ```bash
+   >   sbin/start-master.sh  # 先启动master
+   >   sbin/start-slave.sh spark://<master内网ip>:7077  # 指定master内网ip启动slaves节点
+   > ```
    >
-   >    - 或者将localhost换成内网ip（不一定可行）
+   > - 如果依旧不行，考虑：登陆控制台 --> 创建安全组（选择**放通所有端口**） --> 将master加入刚创建的安全组
+   > - 重新按第一步启动集群，一般都可以正常显示了
    >
-   >      ```bash
-   >      sbin/start-slave.sh spark://<master内网ip>:7077  # 替换<master内网ip> 为你的master内网ip
-   >      ```
-   >
-   > 2. 参考 [issue#8 @iDream-G](https://github.com/Wanghui-Huang/CQU_bigdata/issues/8) 
-   >
-   >    - 配置 `spark-env.sh ` 文件 `SPARK_MASTER_IP` 为公网ip。（:warning: 不推荐，仅参考）
-   
+   > 相关的一些的讨论也可参考： [issue#3 @trevery](https://github.com/Wanghui-Huang/CQU_bigdata/issues/3) 
+
    :tada: :tada:  聪明如你终于做到这步了，第一个实验完结，撒花 :tada:  :tada: 
 ## 4 伪分布式搭建
 
@@ -1543,28 +1541,26 @@ sbin/stop-all.sh      # 关闭集群
 
 3. web UI查看
 
-   在浏览器上输入：`master:8080` ，如果出现下面界面则表示 *Hadoop+Spark* 分布式环境搭建成功！
+   打开腾讯云控制台，选择`VNC`登陆服务器，在浏览器上输入：`master:8080` 。
+
+   如果出现下面界面则表示 *Hadoop+Spark* 分布式环境搭建成功！
 
    ![1579791486348](https://i.loli.net/2020/09/17/d5FtHEDyn9wUmrq.png)
-   
-   > 如果前面一切正常，Web UI 却无法正常正常显示worker，请尝试：
+
+   > :warning: 如果前面一切正常，Web UI 却无法正常正常显示worker。
    >
-   > 1. 参考 [issue#3 @trevery](https://github.com/Wanghui-Huang/CQU_bigdata/issues/3) 
+   > 查看slave节点相关`spark`日志发现报错：无法访问`<master外网ip>:7070` ，多次连接失败。请尝试：
    >
-   >    - 关闭集群，重启启动集群，执行如下start-slave命令并输入相关参数( 不是运行start-slaves.sh) 
+   > - 关闭集群，重启启动集群，执行如下命令
    >
-   >      ```bash
-   >      sbin/start-slave.sh spark://localhost:7077
-   >      ```
+   >   ```bash
+   >   sbin/start-master.sh  # 先启动master
+   >   sbin/start-slave.sh spark://<master内网ip>:7077  # 指定master内网ip启动slaves节点
+   >   ```
    >
-   >    - 或者将localhost换成内网ip（不一定可行）
+   > - 如果依旧不行，考虑：登陆控制台 --> 创建安全组（选择**放通所有端口**） --> 将master加入刚创建的安全组
+   > - 重新按第一步启动集群，一般都可以正常显示了
    >
-   >      ```bash
-   >      sbin/start-slave.sh spark://<master内网ip>:7077  # 替换<master内网ip> 为你的master内网ip
-   >      ```
-   >
-   > 2. 参考 [issue#8 @iDream-G](https://github.com/Wanghui-Huang/CQU_bigdata/issues/8) 
-   >
-   >    - 配置 `spark-env.sh ` 文件 `SPARK_MASTER_IP` 为公网ip。（:warning: 不推荐，仅参考）
-   
+   > 相关的一些的讨论也可参考： [issue#3 @trevery](https://github.com/Wanghui-Huang/CQU_bigdata/issues/3) 
+
    :tada: :tada:  聪明如你终于做到这步了，第一个实验完结，撒花 :tada:  :tada: 
