@@ -53,6 +53,10 @@
 
  ### 2.2 安装相关库
 
+> :warning: 注意，本实验需要你启动桌面环境：
+>
+> - 云服务器控制台 --> VNC登陆 --> startx --> 进行图形桌面环境
+
 - 安装 `jieba`
 
   ```bash
@@ -67,8 +71,10 @@
 
 - 安装 `pyecharts` 
 
+  > 需要指定安装1.7.0版本，否则下面代码API调用接口不正确。
+
   ```bash
-  sudo pip3 install pyecharts -i https://pypi.tuna.tsinghua.edu.cn/simple
+  sudo pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyecharts==1.7.0
   sudo pip3 install snapshot-selenium
   ```
 

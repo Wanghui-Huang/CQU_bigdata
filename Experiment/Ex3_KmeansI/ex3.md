@@ -72,20 +72,24 @@
 
 2. 上传数据集
 
-   > 如果云服务器上传失败，通常是因为云服务安全组禁止了相关端口开放。可参考 [issue#7 @yacaikk](https://github.com/Wanghui-Huang/CQU_bigdata/issues/7) 重新配置安全组端口开放即可。
-
+   > 如果云服务器上传失败，通常是因为云服务安全组禁止了相关端口开放：
+>
+   > - 参考1：[issue#12](hdfs正常启动，但无法从本地上传)
+>
+   > - 参考2： [issue#7 @yacaikk](https://github.com/Wanghui-Huang/CQU_bigdata/issues/7) 重新配置安全组端口开放即可
+   
    将本地文件`iris.data` 上传到 `hdfs://master:9000/ex/ex3dataset/iris.datat` 。
 
    :bookmark_tabs: 以下上传的`hdfs` 路径可简写为：`/ex/ex3dataset`
-   
+
    ```bash
-./bin/hadoop fs -put /home/hadoop/Experiment/Ex3_KmeansI/src/iris.data /ex/ex3dataset
+   ./bin/hadoop fs -put /home/hadoop/Experiment/Ex3_KmeansI/src/iris.data /ex/ex3dataset
    ```
 
    查看是否上传成功：
    
    ```bash
-./bin/hadoop fs -ls -R / 
+   ./bin/hadoop fs -ls -R / 
    ```
    
    ![1580295813167](https://i.loli.net/2020/09/17/OmNtRxBGku6bFDH.png)
