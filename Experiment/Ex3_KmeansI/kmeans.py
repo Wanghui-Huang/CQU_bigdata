@@ -1,3 +1,5 @@
+﻿#!/usr/bin/env python3
+#coding: utf8
 """
 @author: huangwanghui
 @time: 2020/1/29 10:59

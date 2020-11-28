@@ -121,6 +121,7 @@ $$
 
    ```bash
    cd  /home/hadoop/Experiment/Ex4_CustomerForecast/
+   sed -i '1d' ./src/test.csv  # 删除测试集第一行
    touch predeal_test.sh       # 创建相应测试集处理脚本
    chmod +x ./predeal_test.sh  # 增加权限可写
    vim predeal_test.sh         # 开始编辑脚本
@@ -139,7 +140,7 @@ $$
          id=0;
        }
        {
-           if($1 && $2 && $3 && $4 && !$5){
+           if($1 && $2 && $3 && $4 && $5!=-1){
                id=id+1;
                print $1","$2","$3","$4","1
                if(id==10000){   

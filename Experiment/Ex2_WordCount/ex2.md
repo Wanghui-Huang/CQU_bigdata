@@ -74,7 +74,7 @@
   > 需要指定安装1.7.0版本，否则下面代码API调用接口不正确。
 
   ```bash
-  sudo pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyecharts==1.7.0
+  sudo pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pyecharts==1.7.0
   sudo pip3 install snapshot-selenium
   ```
 
