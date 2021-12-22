@@ -2,51 +2,63 @@
 
 <h5 align='center'> Design by W.H Huang | Direct by Prof Feng</h5>
 
-## 1 实验目的
+# 1 实验目的
 
 > :cloud_with_lightning: 本次实验并非系统介绍Linux系统理论知识，注重**实操** ，而且是**针对后续实验需要用到Linux相关知识**，而特别设计的实验。
 
 通过本次实验，你应该：
 
-- 安装Linux系统环境，了解云服务器相关知识
+- 安装Linux系统环境，了解云服务器相关知识；
 
-- 掌握Linux基本知识，如：`vim` 的操作使用、Linux系统常用命令、用户与权限相关知识等
-- 相关工具`FTP`、`SSH` 等使用
+- 掌握Linux基本知识，如：`vim` 的操作使用、Linux系统常用命令、用户与权限相关知识等；
+- 相关工具`FTP`、`SSH` 等使用。
 
 或许你是第一次接触Linux，相信会给你带来不一样的体验。接下来让我们正式进入实验环节吧。
 
-## 2 实验准备
+# 2 实验准备
+
+## 2.0 计分说明
 
 在正式开始接触Linux前，我们需要搭建好Linux平台。
 
-一般而言，我们有三种方式选择安装Linux系统：
+一般而言，我们有三种方式选择安装Linux系统。在大家正式选择前，先和同学们罗列一下各个选择的利弊。
 
-- 购买云服务器，极速搭建（推荐）
-- 安装双系统（推荐）
-- 安装Linux虚拟机
+| Linux平台选择 | 最高分 |                             优点                             |                             缺点                             | 备注 |
+| :-----------: | ------ | :----------------------------------------------------------: | :----------------------------------------------------------: | ---- |
+|   云服务器    | -      |            1.后续所有相关实验最高分按**100**计算             | 1.**分布式会出现较多的网络、病毒攻击问题** 2.会涉及到更多**端口、网络问题**比较难Debug | 推荐 |
+|   虚拟机VM    | -      | 1.后续涉及到分布式实验问题会**少很多**，特别是网络、端口问题 2.操作相比云服务器**更简单** | 1.最高分按**95**分计算 2.分布式实验可能会出现**资源不足**问题，需要自行解决 | 推荐 |
+|    双系统     | -      |       1.相比虚拟机资源会更足，减少分布式时资源相关问题       | 1.后续教程均基于云服务器或者虚拟机，部分操作会不一样，需要自行修改 2. **适合动手能力更强的同学**，因此不太推荐 |      |
 
-考虑到实际后续实验需求，我们推荐采用前两种方式来完成Linux系统搭建。本次实验出于时间考虑只详细介绍 **第一种：云服务器** 方式，课后大家可选择其它方式。
+本次实验出于时间考虑只详细介绍 **第一种：云服务器 和 第二种：虚拟机** 方式，课后大家可选择其它方式。
 
-### 2.1 云上Linux
+下面介绍本次实验环境相关准备过程。
+
+## 2.1 云上Linux
 
 云服务器搭建Linux工作流程如下：
 
 1. 腾讯云/阿里云购买学生10元优惠云服务器
 2. 搭建可视化图行界面
 
-#### 2.1.1 购买云服务器
+### 2.1.1 购买云服务器
 
 > 购买数量为N，N为组员人数。
+
+> [**NEWS**] 学院已经和华为云合作，每位同学都有免费的华为云代金卷，如果条件允许，**建议大家尽量将配置调高一点**：
+>
+> - 比如，内存4G及以上，CPU2核及以上。
+>
+> **在ex2~ex4可以避免很多不必要的烦扰**，e.g.，机器比较卡顿、资源不足等问题。
 
 腾讯云/阿里云服务器都有学生优惠10元/月，以下是撸羊毛详细过程。
 
 1. 进入学生优惠购买界面，以腾讯云为例：[腾讯云学生优惠](https://cloud.tencent.com/act/campus?fromSource=gwzcw.2432500.2432500.2432500&utm_medium=cpc&utm_id=gwzcw.2432500.2432500.2432500)
 
-   地区可选 `上海三区` & `广州四区`，广州离重庆更近一点所以选择 `广州四区` 
+   下图中地区可选 `上海三区` & `广州四区`，广州离重庆更近一点所以选择 `广州四区` ，当然其它地区也可。
 
-   选择操作系统为：`CentOS 7.6.64` 
+   选择操作系统为：`CentOS 7.6.64` 。
 
-   ![1579750584238](https://i.loli.net/2020/09/17/qiJSVvHcUyPTGOr.png)
+   ![1579750584238](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/qiJSVvHcUyPTGOr.png)
 
 2. 付费&设置密码
 
@@ -54,11 +66,19 @@
 
    现在你可以右上角点击：控制台-->云服务器，查看你购买的云服务器：
 
-   ![1579755304749](https://i.loli.net/2020/09/17/s7R9KFTe1oaYIcC.png)
+   ![1579755304749](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/s7R9KFTe1oaYIcC.png)
 
-   你应该看到上图类似界面。红框部分是对应 **内网&公网IP**，记录下来后面多次要用到。 
+   你应该看到上图类似界面。红框部分是对应 **内网&公网IP**，**可记录下来后面多次要用到**。 
+   
+3. **【重点】端口放通**
 
-#### 2.1.2 可视化界面
+   以腾讯云控制台放通端口为例：[腾讯云放通端口](https://cloud.tencent.com/document/product/213/34601) 。
+
+   - 使用云服务器的同学，请务必放通以下端口： 21、22、8080、50010、9001，9000，50070、9866！
+   - 使用云服务器的同学，请务必放通以下端口： 21、22、8080、50010、9001，9000，50070、9866！
+   - 使用云服务器的同学，请务必放通以下端口：21、22、 8080、50010、9001，9000，50070、9866！
+
+### 2.1.2 可视化界面
 
 > 如果阿里云无法启动图形界面，请参考`issue#2` ：[2.2.2节-获取桌面环境失败](https://github.com/Wanghui-Huang/CQU_bigdata/issues/2)
 
@@ -66,7 +86,7 @@
 
 1. 选择VNC登陆
 
-   ![1579752091019](https://i.loli.net/2020/09/17/TXcUeKSyM27vzGk.png)
+   ![1579752091019](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/TXcUeKSyM27vzGk.png)
 
    登入后依次输入账号，密码：
 
@@ -86,18 +106,9 @@
    startx # 启动图形界面
    ```
 
-   ![1579752349514](https://i.loli.net/2020/09/17/Kv96Mfm5epgHT4X.png)
+   ![1579752349514](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/Kv96Mfm5epgHT4X.png)
 
-### 2.2 云下Linux
-
-我们依旧建议你在云上Linux完成本次及后续实验学习，当然你也可以选择：
-
-- 双系统安装Linux（推荐）
-- 虚拟机安装Linux
-
-相关安装你可以在课后完成与实践，出于篇幅及时间考虑这里不再赘述。
-
-### 2.3 SSH工具---Xshell
+### 2.1.3 SSH工具---Xshell
 
 每次在浏览器连接云服务器终究还是不太方便，我们可以安装`SSH`工具 如`Xshell`在`Windows`界面下用来访问远端不同系统下的服务器，从而达到方便操作远程控制终端的目的。
 
@@ -115,15 +126,15 @@
 
    :slightly_smiling_face: 下图查看公网IP是在**阿里云上实例控制台**，如果是腾讯云也同样登陆**腾讯云控制台**查看即可。
 
-   ![1559037648149](https://i.loli.net/2020/09/17/s3HXLtDo56iOEgB.png)
+   ![1559037648149](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/s3HXLtDo56iOEgB.png)
 
    按照上图填好信息，再点击`用户身份验证`，输入登陆账号密码（就是我们在购买云服务器时设置的）：
 
-   ![1559037973213](https://i.loli.net/2020/09/17/po2XzR3fshegQBS.png)
+   ![1559037973213](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/po2XzR3fshegQBS.png)
 
    点击确定。然后在Xshell界面选择：`会话管理` - `阿里云服务器` 右击 - 打开，便连接到我们的服务器了。
 
-   ![1559038420911](https://i.loli.net/2020/09/17/SbJ9ur6tzK8CTga.png)
+   ![1559038420911](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/SbJ9ur6tzK8CTga.png)
 
 3. 测试
 
@@ -143,7 +154,7 @@
 
    按下 `i` 进入插入模式，删除所有内容，然后编辑你的主机名：
 
-   ![1580876113648](https://i.loli.net/2020/09/17/1FuE6tgQXi7ozLv.png)
+   ![1580876113648](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/1FuE6tgQXi7ozLv.png)
 
    按下`ESC` 键进入命令模式，输入 `:wq!`保存并退出
 
@@ -155,11 +166,264 @@
 
    等待约1分钟左右，重新连接可发现主机名已经被修改。
 
-  ## 3 Linux相关知识
+## 2.2 云下Linux
 
->  通过本节你将掌握后续实验所必须要掌握的Linux相关知识。
+云下Linux推荐虚拟机进行安装，和我们后续的教程可保持一致。
 
-### 3.1 Linux 系统目录结构
+- 虚拟机安装Linux（推荐）
+- 双系统安装Linux
+
+出于篇幅和后续实验考虑，这里主要介绍如何使用VMware Workstation虚拟机安装CentOS7（Linux发行版本之一）。
+
+### 2.2.1 虚拟机安装CentOS7
+
+虚拟机安装CentOS7可分为两步：
+
+1. 安装VMware
+2. 安装CentOS7镜像
+
+#### 安装VMware
+
+1. 下载VMware Workstation Pro 16 
+
+   > :key: 密钥激活在 `/ex0/src` 目录下，请自取。
+   >
+   > - 也可以试试`pro 16`永久批量密钥：`ZF3R0-FHED2-M80TY-8QYGC-NPKYF` 。
+
+   - win平台下载链接：[getworkstation-win](https://www.vmware.com/go/getworkstation-win) 
+   - mac平台免费获取：[点击这里注册VMware Fusion Player账号获得免费许可](https://my.vmware.com/web/vmware/evalcenter?p=fusion-player-personal)
+   - linux平台下载链接：[getworkstation-linux](https://www.vmware.com/go/getworkstation-linux)
+
+   如果链接失效，可自行去[官网](https://www.vmware.com/cn.html)下载。
+
+2. 安装&激活
+
+   除了`安装路径` 一直默认选择（也可根据自己喜好）即可，最后输入`激活密钥` 安装完成。
+
+#### 安装CentOS7镜像
+
+1. 准备centos7镜像
+
+   请下载该镜像到合适目录：[阿里云镜像](http://mirrors.aliyun.com/centos/7/isos/x86_64/)
+
+   ![image-20211221115125401](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221115125401.png)
+
+2. 创建虚拟机
+
+   以管理员身份运行VMware pro 16 --->主页--->创建新的虚拟机：
+
+   ![image-20211221115242471](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221115242471.png)
+
+   安装类型选择**典型** --->选择稍后安装系统：
+
+   ![image-20211221115633351](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221115633351.png)
+
+   下一步选择要安装的镜像版本：
+
+   ![image-20211221115853903](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221115853903.png)
+
+   然后我们开始点击“下一步”进入虚拟机配置环节。
+
+   
+
+3. 虚拟机配置
+
+   - 命名虚拟机：名称默认即可，路径请自行选择合适路径 
+
+     ![image-20211221120126721](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221120126721.png)
+
+     开始下一步，进行虚拟机相关配置。
+
+   - 磁盘、内存、网络等配置
+
+     1. **处理器**
+        - 处理器数量：1
+        - 每个处理器内核数：建议2个及以上
+
+     2. 内存：建议2G及以上
+
+     3. **网络类型**：选择NAT类型（第二个）
+
+     4. **I/O控制器类型、选择磁盘类型**：默认即可，下一步
+
+     5. **磁盘**：创建新的虚拟磁盘 ----> 建议20G及以上
+
+        ![image-20211221120303004](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221120303004.png)
+
+     最后点击完成配置。
+
+4. 正式安装CentOS7
+
+   - 点击编辑虚拟机设置，选择ISO映像文件
+
+     ![image-20211221121115192](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221121115192.png)
+
+   - 选择之前我们下载CentOS7镜像
+
+     ![image-20211221121229696](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221121229696.png)
+
+     选择好文件--->确认，回到主页。
+
+   - 开启虚拟机
+
+     ![image-20211221121322024](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221121322024.png)
+
+5. 配置CentOS7
+
+   进入虚拟机后，依次进行如下配置
+
+   - **安装语言**：中文
+
+   - **安装信息摘要**：**带有叹号的需要点击配置**
+
+     - 如，`安装位置` ---> 点击---> 选择“我要配置分区” ---> 完成 ---> 进入手动分区页面
+
+       ![image](https://img-blog.csdnimg.cn/img_convert/3c5888548ecdd3d9fa2910248224321f.png)
+
+       选择“点击这自动创建他们” ---> 完成--->接受更改
+
+       ![image](https://img-blog.csdnimg.cn/img_convert/188393c3a52e84d6f3754be94f251a25.png)
+
+   - **叹号消失开始安装**
+
+     - 配置root密码：自定义
+     - 许可证：接受许可证
+
+     最近点击完成配置。
+
+6. **网络设置**
+
+   虚拟机有三种网络连接方式：
+
+   - 桥接模式：IP与主机完全相同，相当于用一条网线直接连接在一起
+   - **NAT模式**：相当于以自己PC形成的一个局域网，虚拟机和主机都有自己对应的局域网IP
+   - 仅主机模式：虚拟机只能访问主机
+
+   本次我们来进行NAT模式下的网络配置（注意需要管理员权限）。
+
+   1. 基本背景知识
+
+      局域网可使用的网段（私网地址段）有三大段：
+
+      - A类：10.0.0.0~10.255.255.255
+      - B类：172.16.0.0~172.31.255.255
+      - C类：192.168.0.0~192.168.255.255
+
+   2. VM中编辑网络
+
+      ![image-20211221122826775](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221122826775.png)
+
+      - **子网设置**：`192.168.45.0`
+
+        ![image-20211221123334832](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221123334832.png)
+
+      - **网关设置**：`192.168.45.1`
+
+        ![image-20211221123450328](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221123450328.png)
+
+      - **DHCP设置**
+
+        ![image-20211221123530849](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221123530849.png)
+
+   3. 本机中网络配置
+
+      以上步骤完成后配置本机NAT连接下的IPｖ４，仅需配置其中的VMnet8。
+
+      ![image-20211221123637247](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221123637247.png)
+
+      双击VMnet8，点击属性，选择IPv4协议（IP地址尽量不与DHCP配置的区间重复）。
+
+      ![image-20211221123717083](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221123717083.png)
+
+   4. 修改ens33文件
+
+      当前NAT子网下的网络还连不了网，需如下配置：
+
+      ```bash
+      sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
+      ```
+
+      > 注意：中间需要空两行。
+
+      ![image-20211221124025227](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221124025227.png)
+
+   
+
+### 2.2.1 可视化界面
+
+1. 安装GNOME界面
+
+   ```bash
+   sudo yum groupintsall "GOME Desktop"
+   ```
+
+2. 用命令启动GNOME
+
+   ```bash
+   startx
+   ```
+
+3. 建议：安装粘贴板共享软件
+
+   ```bash
+   sudo yum install open-vm-tools
+   ```
+
+### 2.2.3 SSH工具：MobaXterm
+
+1. 安装ipconfig查询ip
+
+   ```bash
+   sudo yum install ifconfig
+   ```
+
+   假如没有相关的安装包
+
+   ```bash
+   yum search ifconfig
+   ```
+
+   ![image-20201201001156141](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20201201001156141.png)
+
+   找到安装包安装
+
+   ```bash
+   sudo yum install net-tools.x86_64
+   ```
+
+   最后记录ip地址，如下红框所示（后面登陆要用到）
+
+   ```bash
+   ifconfig
+   ```
+
+   [注] 这个IP就是ens33文件配置的IPADDR。
+
+   ![image-20211221124626888](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221124626888.png)
+
+2. 安装MobaXterm
+
+   下载[免费版](https://mobaxterm.mobatek.net/download.html) , 默认安装即可。
+
+3. 登陆
+
+   选择Session，配置如下：
+
+   ![image-20211221125140482](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221125140482.png)
+
+   选择用户为`root` （我这里是自己新建的`hadoop` 用户，请修改）。
+
+   ![image-20211221125232389](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221125232389.png)
+
+   输入`root`密码后，即可顺利登陆：
+
+   ![image-20211221125321672](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211221125321672.png)
+
+  # 3 Linux相关知识
+
+>  通过本节你将掌握后续实验所必须的Linux相关知识。
+
+## 3.1 Linux 系统目录结构
 
 Linux目录结构如下图：
 
@@ -167,25 +431,25 @@ Linux目录结构如下图：
 
 我们必须要知道的根目录 `/` 相关目录作用：
 
-- **/bin：**binary缩写，保存可执行文件，我们敲的命令都在bin中
+- **/bin**：binary缩写，保存可执行文件，我们敲的命令都在bin中；
 
-- **/boot：**引导目录，操作系统需要引导启动的都在其下
+- **/boot**：引导目录，操作系统需要引导启动的都在其下；
 
-- **/etc：**所有的配置文件保存其下，一般以`.cof`结尾
+- **/etc**：所有的配置文件保存其下，一般以`.cof`结尾；
 
-- **/home：**所有用户家目录（**root除外**），每个用户都在其下有个对应文件夹保存对应信息。
+- **/home**：所有用户家目录（**root除外**），每个用户都在其下有个对应文件夹保存对应信息；
 
-- **/root：**root用户家目录。
+- **/root**：root用户家目录；
 
-- **/var：**保存一些经常变换的信息，如**服务器网站**信息，**操作系统日志**信息
+- **/var**：保存一些经常变换的信息，如**服务器网站**信息，**操作系统日志**信息;
 
-- **/tmp：**临时目录，会被隔几天自动删除
+- **/tmp**：临时目录，会被隔几天自动删除；
 
-- **/proc：**系统的实时的信息，不存在硬盘，在内存中。
+- **/proc**：系统的实时的信息，不存在硬盘，在内存中。
 
-  ![1559293203672](https://i.loli.net/2020/09/17/xpwA3ODReoGH26M.png)
+  ![1559293203672](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/xpwA3ODReoGH26M.png)
 
- ### 3.2 文件系统相关操作
+ ## 3.2 文件系统相关操作
 
 以下命令，为了更好实践巩固，请务必亲自验证。
 
@@ -197,7 +461,7 @@ Linux目录结构如下图：
 
    - `ls`：显示文件，但不显示隐藏文件
 
-     ![1580816737694](https://i.loli.net/2020/09/17/sHrKkwPjLUT9aY3.png)
+     ![1580816737694](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/sHrKkwPjLUT9aY3.png)
 
    - `ls -a`：可显示隐藏文件
 
@@ -211,7 +475,7 @@ Linux目录结构如下图：
 
    > 常和`pwd` 命令配合显示当前目录：
    >
-   > ![1580817000019](https://i.loli.net/2020/09/17/zaDHgVF4UL51lMx.png)
+   > ![1580817000019](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/zaDHgVF4UL51lMx.png)
 
    命令格式：`cd <参数(可选)> <目录（可选，默认家目录）>` 
 
@@ -251,7 +515,7 @@ Linux目录结构如下图：
    ls -R test
    ```
 
-   ![1580817855228](https://i.loli.net/2020/09/17/nQb6L3dXimBRzVs.png)
+   ![1580817855228](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/nQb6L3dXimBRzVs.png)
 
 4. `cp`复制文件
 
@@ -275,7 +539,7 @@ Linux目录结构如下图：
    ls -l 
    ```
 
-   ![1580818248218](https://i.loli.net/2020/09/17/XopbvLZcNmGkOIC.png)
+   ![1580818248218](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/XopbvLZcNmGkOIC.png)
 
 5. `mv` 移动文件
 
@@ -289,7 +553,7 @@ Linux目录结构如下图：
    mv /test/readme1.md /test/readme2.md
    ```
 
-   ![1580818517711](https://i.loli.net/2020/09/17/flFqT93WBPRciDX.png)
+   ![1580818517711](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/flFqT93WBPRciDX.png)
 
 6. `rm`  删除文件
 
@@ -309,9 +573,9 @@ Linux目录结构如下图：
 
    请再次查看是否还存在 `/test` 目录。
 
-### 3.3 Linux常用命令/技巧
+## 3.3 Linux常用命令/技巧
 
-#### 3.3.1 Linux常用命令
+### 3.3.1 Linux常用命令
 
 1. `useradd` 创建用户
 
@@ -338,7 +602,7 @@ Linux目录结构如下图：
 
    进入`vim` 编辑器，按下`i` 进入插入模式，输入下面红框字符。
 
-   ![1580823743819](https://i.loli.net/2020/09/17/Ja3NHvt5OiysSEZ.png)
+   ![1580823743819](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/Ja3NHvt5OiysSEZ.png)
 
    输入完毕，按下 `ESC` , 然后输入 `:wq!` 保存文件即可。
 
@@ -351,11 +615,11 @@ Linux目录结构如下图：
    id            # 显示用户信息
    ```
 
-   ![1580820517045](https://i.loli.net/2020/09/17/9Up7fiD6Wmd5HEk.png)
+   ![1580820517045](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/9Up7fiD6Wmd5HEk.png)
 
    特别的，我们切换到`huihui` 用户是个普通用户，有些命令只能在`root` 用户权限下执行，我们可以在前加上`sudo` ，例如：
 
-   ![1580820366798](https://i.loli.net/2020/09/17/rQkolcFAfYx8b9t.png)
+   ![1580820366798](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/rQkolcFAfYx8b9t.png)
 
    ```bash
    sudo touch /test.txt
@@ -373,11 +637,11 @@ Linux目录结构如下图：
 
    命令格式：`data <参数（可选）> `  ，显示时间
 
-   ![1580820754534](https://i.loli.net/2020/09/17/jJxiB74tIFw13VD.png)
+   ![1580820754534](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/jJxiB74tIFw13VD.png)
 
    命令格式：`cal <参数（可选）> `   ，显示日历
 
-   ![1580820801463](https://i.loli.net/2020/09/17/si8La73ZMBXnoNr.png)
+   ![1580820801463](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/si8La73ZMBXnoNr.png)
 
 4. 查看文件
    - `cat <文件名>`：**全部显示**
@@ -411,7 +675,7 @@ Linux目录结构如下图：
 
    查看家目录下文件：
 
-   ![1580821740854](https://i.loli.net/2020/09/17/HMI1AXaxYslFErL.png)
+   ![1580821740854](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/HMI1AXaxYslFErL.png)
 
    [**tar**] 命令格式：`<tar> <参数（可选）> <目标文件名> <源文件名>` 
 
@@ -436,7 +700,7 @@ Linux目录结构如下图：
    tar -czf  alltxt.tar.gz  *.txt 	 # *表示匹配0个或多个字符
    ```
 
-   ![1580822896903](https://i.loli.net/2020/09/17/fgzJLm1MbUE8CIn.png)
+   ![1580822896903](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/fgzJLm1MbUE8CIn.png)
 
    > 实践：解压`~/alltxt.tar.gz` 
 
@@ -448,7 +712,7 @@ Linux目录结构如下图：
    tar -xzf ~/test/alltxt.tar.gz -C ~
    ```
 
-   ![1580823016123](https://i.loli.net/2020/09/17/yMDEJApiYSa8s24.png)
+   ![1580823016123](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/yMDEJApiYSa8s24.png)
 
 6. `locate/find`查找文件
 
@@ -467,7 +731,7 @@ Linux目录结构如下图：
    locate 1.txt
    ```
 
-   ![1580824094815](https://i.loli.net/2020/09/17/wXW8h1LrOE9RBqp.png)
+   ![1580824094815](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/wXW8h1LrOE9RBqp.png)
 
    [**find**] 命令格式：`find <查找位置> < 查找参数> <需要查找的文件>`
 
@@ -484,19 +748,19 @@ Linux目录结构如下图：
    sudo find / -name *.txt
    ```
 
-   ![1580824728358](https://i.loli.net/2020/09/17/xLJnHAbNYiKsjW4.png)
+   ![1580824728358](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/xLJnHAbNYiKsjW4.png)
 
 7. `jobs/fg` 作业管理
 
    很多时候，我们会使用`ctrl+z` 中断当前命令后台运行。比如，我们输入`sudo visudo`进入编辑模式：
 
-   ![1580825644578](https://i.loli.net/2020/09/17/TfyJI3U2WQrM79b.png)
+   ![1580825644578](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/TfyJI3U2WQrM79b.png)
 
    但是，这个时候我们又想切换回中端，于是按下`ctrl+z` 。
 
    使用`jobs` 命令可以查看后台运行的命令：
 
-   ![1580825772209](https://i.loli.net/2020/09/17/yCIzWsj5u73krPQ.png)
+   ![1580825772209](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/yCIzWsj5u73krPQ.png)
 
    这个时候我们如果还想继续编辑，只需键入：
 
@@ -510,7 +774,7 @@ Linux目录结构如下图：
    kill %5 # 注意序号可能不是5是1
    ```
 
-#### 3.3.2 常用技巧
+### 3.3.2 常用技巧
 
 > 本节将介绍linux最常用的技巧。
 
@@ -524,7 +788,7 @@ Linux目录结构如下图：
    cd /home/h
    ```
 
-   ![1580825096651](https://i.loli.net/2020/09/17/xlOLYBaz6q2p1Sw.png)
+   ![1580825096651](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/xlOLYBaz6q2p1Sw.png)
 
 2. 重复命令技巧
    - `↑`+`回车 `：执行上一条命令
@@ -539,7 +803,7 @@ Linux目录结构如下图：
 
    - `ctrl+r` ：键入关键字后，会自动搜索符合的命令
 
-     ![1580825340128](https://i.loli.net/2020/09/17/T4VtcioqkN2Kwgy.png)
+     ![1580825340128](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/T4VtcioqkN2Kwgy.png)
 
 4. 获取帮助
 
@@ -557,7 +821,7 @@ Linux目录结构如下图：
      ls --help
      ```
 
-     ![1580828331572](https://i.loli.net/2020/09/17/huxitfzNPJoD3a4.png)
+     ![1580828331572](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/huxitfzNPJoD3a4.png)
 
    - `man`
 
@@ -573,15 +837,14 @@ Linux目录结构如下图：
      man ls
      ```
 
-     ![1580828423093](https://i.loli.net/2020/09/17/lWY9IwyShZB6kr8.png)
+     ![1580828423093](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/lWY9IwyShZB6kr8.png)
 
      :slightly_smiling_face: 快速定位技巧：进入`man` 文档 --> 输入 `/ <keywords>` 快速搜索/高亮指定关键字。
 
      例如输入：`/ -a` 再回车
 
-     ![1580828698386](https://i.loli.net/2020/09/17/jkuiJVULOeCht7K.png)
 
-### 3.4 `vim` 基础入门
+## 3.4 `vim` 基础入门
 
 后续实验多次需要使用`vim`文本 编辑功能，请仔细按照下述步骤实操。
 
@@ -591,7 +854,7 @@ Linux目录结构如下图：
 - 插入模式：命令模式下按下 `i`、`O` 键可进入，此模式下可对文本进行编辑、插入
 - EX模式：命令模式下输入 `:` 便可进入EX模式，用户保存修改或退出`vim`
 
-#### 3.4.1 vim实践
+### 3.4.1 vim实践
 
 > 进入命令模式有两种方式：
 >
@@ -630,19 +893,19 @@ vim ~/hello.txt
 
    按下 `i` 键插入模式，输入以下字符
 
-   ![1580827178980](https://i.loli.net/2020/09/17/dEolbAenUYSmPHq.png)
+   ![1580827178980](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/dEolbAenUYSmPHq.png)
 
 2. 疯狂复制
 
    按下`ESC` 键进入命令模式 ---> 光标移动到 `hello linux` 那行 --> 按下`yy` 进行复制 --> 按下`p` 进行多次复制：
 
-   ![1580827311122](https://i.loli.net/2020/09/17/5TtjMQgvASspz4m.png)
+   ![1580827311122](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/5TtjMQgvASspz4m.png)
 
 3. 显示行号
 
    按下`ESC` 键进入命令模式 ---> 输入 `:set number` --> 显示行号
 
-   ![1580827739828](https://i.loli.net/2020/09/17/rPbJkzsOt56gYSV.png)
+   ![1580827739828](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/rPbJkzsOt56gYSV.png)
 
 4. 保存退出
 
@@ -654,11 +917,11 @@ vim ~/hello.txt
    cat -n ~/hello.txt   # 参数n表示同时显示行号
    ```
 
-   ![1580827833838](https://i.loli.net/2020/09/17/ZKAkQHV5M9wlG2p.png)
+   ![1580827833838](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/ZKAkQHV5M9wlG2p.png)
 
-### 3.5 用户权限基础
+## 3.5 用户权限基础
 
-#### 3.5.1 用户与组
+### 3.5.1 用户与组
 
 **[用户] 限制使用者或者进程** 可以使用，不可以使用哪些资源 。
 
@@ -672,11 +935,11 @@ vim ~/hello.txt
 
   - `/etc/passwd` ： 保存用户信息
 
-    ![1559463477365](https://i.loli.net/2020/09/17/ZFdIytj8TGk1L5M.png)
+    ![1559463477365](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/ZFdIytj8TGk1L5M.png)
 
   - `/etc/shadow`：保存用户密码（加密的）
 
-    ![1559463591598](https://i.loli.net/2020/09/17/Sai8luV2tox51BL.png)
+    ![1559463591598](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/Sai8luV2tox51BL.png)
 
   - `/etc/group` ：保存组信息
 
@@ -716,13 +979,13 @@ vim ~/hello.txt
    id lxSmile
    ```
 
-   ![1580873280514](https://i.loli.net/2020/09/17/lhxVifvkAmWQsNp.png)
+   ![1580873280514](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/lhxVifvkAmWQsNp.png)
 
    ```bash
    cat -n -E /etc/passwd   # 在/etc/passwd配置文件查看用户信息
    ```
 
-   ![1580873449521](https://i.loli.net/2020/09/17/6AZTatvS4NCqe5P.png)
+   ![1580873449521](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/6AZTatvS4NCqe5P.png)
 
 2. 修改用户
 
@@ -742,7 +1005,7 @@ vim ~/hello.txt
    usermod -u 666 -G testGroup1 -g testGroup1 lxSmile
    ```
 
-   ![1580874102378](https://i.loli.net/2020/09/17/2uhroiaEYZK1Dns.png)
+   ![1580874102378](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/2uhroiaEYZK1Dns.png)
 
 3. 删除用户
 
@@ -759,9 +1022,9 @@ vim ~/hello.txt
    ```
 
    查看是否还存在：
-   ![1580874374129](https://i.loli.net/2020/09/17/cCEbYyew8DQmKhV.png)
+   ![1580874374129](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/cCEbYyew8DQmKhV.png)
 
-#### 3.5.2 文件权限实操
+### 3.5.2 文件权限实操
 
 **[文件权限]用来管理文件读、写、执行** ，每个文件都有特定权限、所属组、所属用户。
 
@@ -777,7 +1040,7 @@ vim ~/hello.txt
 
     类型为目录(**d**)，所属用户权限为<u>读写执行</u> (**rwx**)，所属组权限为<u>读写执行</u> (**rwx**)，其它用户权限为<u>读执行</u> (**r-x**)，所属用户为**huihui**，所属组为**huihui**，大小为**4096**B，修改时间为**21:26**。
 
-    ![1580872154732](https://i.loli.net/2020/09/17/nezgdBADYJ1oI2m.png)
+    ![1580872154732](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/nezgdBADYJ1oI2m.png)
 
 > 独立完成以下文件权限相关操作。
 
@@ -802,7 +1065,7 @@ touch /test5/5.txt
    chown -R huihui /test5   # 修改文件夹test5所属用户为huihui
    ```
 
-   ![1580875145288](https://i.loli.net/2020/09/17/6ZzT83RuULWnDif.png)
+   ![1580875145288](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/6ZzT83RuULWnDif.png)
 
 2. 修改文件所属组
 
@@ -816,7 +1079,7 @@ touch /test5/5.txt
    chgrp -R huihui /test5   # 修改文件夹test5所属组为huihui
    ```
 
-   ![1580875299501](https://i.loli.net/2020/09/17/FmjuR8xk2UHeMKb.png)
+   ![1580875299501](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/FmjuR8xk2UHeMKb.png)
 
 3. 修改文件权限
 
@@ -828,7 +1091,7 @@ touch /test5/5.txt
 
    > 修改 `/test5/5.txt` ，权限从`rw-r--r--` ---> `r--rwxrwx` 
    >
-   > ![1580875509098](https://i.loli.net/2020/09/17/RzfMbQe7tqukxlE.png)
+   > ![1580875509098](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/RzfMbQe7tqukxlE.png)
 
    ```bash
    # 用户（U）权限[减去写]权限
@@ -837,9 +1100,9 @@ touch /test5/5.txt
    chmod go+wx /test5/5.txt
    ```
 
-   ![1580875689076](https://i.loli.net/2020/09/17/wi8lt2QSJZf7VcB.png)
+   ![1580875689076](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/wi8lt2QSJZf7VcB.png)
 
-## 4 实验小结
+# 4 实验小结
 
 本次实验虽然只是简单地对接下来实验所需的linux操作进行初步熟悉，但是或许第一次接触linux的你还是觉得颇为困难。但是不用担心，后续所有有关linux操作，你在本次实验中已经全部学习过了，相关操作也有详细的实验指导。
 

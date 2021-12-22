@@ -1,5 +1,5 @@
 ﻿#!/usr/bin/env python3
-#coding: utf8
+#coding: UTF-8
 """
 @author: huangwanghui
 @time: 2020/1/25 22:14
@@ -11,6 +11,14 @@ from pyecharts.render import make_snapshot
 from snapshot_selenium import snapshot
 from pyecharts import options as opts
 from pyecharts.charts import Pie
+
+# 解决错误：Running as root without --no-sandbox is not supported.
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
 
 SAVAPATH = '/home/hadoop/Experiment/Ex2_WordCount/results/'
 
@@ -53,6 +61,8 @@ class visualize:
                        margin=5)
         wc.generate_from_frequencies(wordDic)
         # 保存结果
+        if not os.path.exists(SAVAPATH):
+            os.makedirs(SAVAPATH)
         wc.to_file(os.path.join(SAVAPATH, '词云可视化.png'))
 
     def drawPie(self, wordDic):

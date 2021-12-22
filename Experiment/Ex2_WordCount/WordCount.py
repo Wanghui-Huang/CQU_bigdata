@@ -1,5 +1,5 @@
 ﻿#!/usr/bin/env python3
-#coding: utf8
+#coding: UTF-8
 """
 @author: huangwanghui
 @time: 2020/1/25 22:12
@@ -61,7 +61,7 @@ def wordcount(isvisualize=False):
     #【现在你应该完成下面函数编码】
     resRdd = wordsRdd.filter(lambda word: ) \
                      .filter(lambda word: )\
-                     .map(lambda word: ) \
+                     .map(lambda word:(word,1)) \
                      .reduceByKey(lambda a, b: ) \
                      .sortBy(ascending=False, numPartitions=None, keyfunc=lambda x: x[1]) \
 
