@@ -1,4 +1,4 @@
-<h1 align='center'>2022CQU本科生实验和PPT设计</h1>
+<h1 align='center'>重庆大学计算机学院《大数据课程》</h1>
 
 <h5 align='center'> Design by W.H. Huang | Direct by Prof. Feng</h5>
 
@@ -6,11 +6,11 @@
 
 > :slightly_smiling_face: 指导设计 *@ Prof. Feng*  ;  具体设计 *@ W.H. Huang*
 
-此次为2020年重庆大学计算机系新开课程《大数据基础》设计相应实验和课堂讲解PPT：
+重庆大学计算机系开源课程《大数据》相关课程实验及课堂讲解PPT：
 
 - 开源地址：[CQU_bigdata](https://github.com/Wanghui-Huang/CQU_bigdata)
 
-- 当前版本：`Beta V1.0` --> `Beta V2.0`-->`Relase V1.6.1`-->`Relase V2.1`
+- 当前版本：`Beta V1.0` --> `Beta V2.0`-->`Relase V1.6.1`-->`Relase V2.1`-->`Relase V2.2`
 
 - 完成度：`95%` --> `100%` --> `持续开源完善`
 
@@ -36,7 +36,7 @@
 | :----------------------------------------------------------: | :--------------: | :----------------------------------------------------------: |
 |              issue：反馈实验bug、优化实验流程等              |      +5~+10      |   根据issue质量给分，请参考issue中助教点评过的高质量issue    |
 |        文档：对实验设计不足的地方进行优化，并撰写文档        |     +10~+20      | 如，ex2@[leexinhao](https://github.com/leexinhao)同学建议加入远程开发，助教采纳后并完善其初稿文档。本次ex2实验成绩给予满分。 |
-| 文档：每一年同学根据自己的想法完成非常棒的课设，并提交案例文档，作为我们的实验补充 |   本门课程优秀   | 质量很重要，如果质量尚不足，只能给实验加分。不能算作总成绩优秀。 |
+| 文档：每一年同学可根据自己的想法完成非常棒的课设，并提交案例文档，作为我们的实验补充 |   本门课程优秀   | 质量很重要，如果质量尚不足，只能给实验加分，不能算作总成绩优秀。 |
 
 ## 实验设计
 
@@ -68,31 +68,35 @@
 PPT 部分章节因为自身无法较好把握整体结构，最开始尚未完成设计，现在已基本完成。
 
 - `2020/09/17更新`：每个实验也对应增加，**实验PPT介绍 & 录音讲解** ；
-- `2021/12/20更新`：:warning: Git上（课件）PPT版本和老师用的不同步，**请咨询冯老师最新PPT版本**。
+- `2021/12/20更新`：:warning: Git上（课件）已更新，**请以我们项目`CQU_bigdata/PPT`目录下课件为准**。
 
 具体设计见下表：
 
-| 序号 |      章节名       |                           PPT内容                            | 完成度 | 页数 |  备注  |
-| :--: | :---------------: | :----------------------------------------------------------: | :----: | :--: | :----: |
-|  1   |    大数据概述     |                 介绍大数据概念、来源、应用等                 |   √    |  50  |        |
-|  2   | Hadoop与Spark简介 |                  介绍Hadoop及Spark相关知识                   |   √    |  69  | 已完成 |
-|  3   |  大数据算法简介   |     介绍大数据相关算法，如：分类、聚类、关联规则、预测等     |   √    |  80  |        |
-|  4   |  图计算与流计算   |               介绍大数据图计算、流计算相关知识               |   √    |  72  |        |
-|  5   |  大数据应用介绍   | 介绍大数据相关应用，如：推荐系统、地震大数据、交通大数据、环境大数据等 |   √    |  53  |        |
+| 序号 |            章节名             |                           PPT内容                            | 完成度 | 页数 | 备注 |
+| :--: | :---------------------------: | :----------------------------------------------------------: | :----: | :--: | :--: |
+|  1   |          大数据概述           |                 介绍大数据概念、来源、应用等                 |   √    |  51  |      |
+|  2   | Hadoop平台（Hadoop概述+HDFS） |                   介绍Hadoop及HDFS相关知识                   |   √    |  38  |      |
+|  3   | Hadoop平台（YARN+MapReduce）  |                   介绍Hadoop分布式相关知识                   |   √    |  57  |      |
+|  4   |       分布式数据库Hbase       |                    介绍分布式数据库Hbase                     |   √    |  65  |      |
+|  5   |           Spark系统           |                      介绍Spark相关知识                       |   √    |  59  |      |
+|  6   |          大数据算法           |     介绍大数据相关算法，如：分类、聚类、关联规则、预测等     |   √    | 158  |      |
+|  7   |          大数据应用           | 介绍大数据相关应用，如：推荐系统、地震大数据、交通大数据、环境大数据等 |   √    |  54  |      |
+|  8   |        图计算与流计算         |               介绍大数据图计算、流计算相关知识               |   √    |  73  |      |
 
 ## 特别致谢
 
 以下致谢名单不分先后：
 
-- [YangYiming919](https://github.com/YangYiming919) 2018级本科生
+- [YangYiming919](https://github.com/YangYiming919) ，2018级本科生
 - 朱海龙，2018级本科生
-- [white_windmills](https://github.com/leexinhao) 2019级本科生
-- [Tan Yong](https://github.com/a-fly-fly-bird) 2019级本科生
-- [Cquyxf](https://github.com/Cquyxf) 2019级本科生
-- [chen hongyu](https://github.com/hqcheng-cqu) 2019级本科生
-- [ZJY](https://github.com/Info4Rec) 2020级研究生 |助教
-- [trevery](https://github.com/trevery) 2020级研究生
-- [hqcheng-cqu](https://github.com/hqcheng-cqu) 2021级研究生 |助教
+- [white_windmills](https://github.com/leexinhao) ，2019级本科生
+- [Hongcheng-Gao](https://github.com/Hongcheng-Gao)   ，2019级本科生
+- [Tan Yong](https://github.com/a-fly-fly-bird) ，2019级本科生
+- [Cquyxf](https://github.com/Cquyxf) ，2019级本科生
+- [chen hongyu](https://github.com/hqcheng-cqu) ，2019级本科生
+- [ZJY](https://github.com/Info4Rec) ，2020级研究生 |助教
+- [trevery](https://github.com/trevery) ，2020级研究生
+- [hqcheng-cqu](https://github.com/hqcheng-cqu) ，2021级研究生 |助教
 
 ## 阶段小结
 
