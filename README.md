@@ -6,7 +6,7 @@
 
 > :slightly_smiling_face: 指导设计 *@ Prof. Feng*  ;  具体设计 *@ W.H. Huang*
 
-重庆大学计算机系开源课程《大数据》相关课程实验及课堂讲解PPT：
+重庆大学计算机学院“大数据课程群”实验及PPT：
 
 - 开源地址：[CQU_bigdata](https://github.com/Wanghui-Huang/CQU_bigdata)
 
@@ -134,7 +134,7 @@ PPT 部分章节因为自身无法较好把握整体结构，最开始尚未完�
 
 - `2020/02/10` 
 
-  - 距离具体正式开工设计正好过去了`20` 天，完成`Beta_V1.0` 版本的。
+  - 距离具体正式开工设计正好过去了`20` 天，完成`Beta_V1.0` 版本。
 
   
 

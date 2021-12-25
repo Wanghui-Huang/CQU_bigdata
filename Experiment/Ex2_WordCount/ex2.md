@@ -79,7 +79,7 @@
 > 教程支持：@[white_windmills](https://github.com/leexinhao) @[Wanghui-Huang](https://github.com/Wanghui-Huang) @[ghc2000](https://github.com/ghc2000)
 >
 > - 云环境：基于华为云，腾讯云/阿里云也可
-> - 操作系统：基于Ubantu，CentOS下基本一致
+> - 操作系统：基于Ubantu，CentOS下也可
 
 在教程`ex0` & `2.1节`时，我们介绍了：
 
@@ -98,7 +98,7 @@
 1. VNC登陆云服务器，安装桌面、IDE等；
 2. 在VNC中云桌面编写代码。
 
-这种做法经过实际尝试也是不建议的：
+但这种做法经过实际尝试也是不建议的：
 
 - **资源问题**：安装桌面要**消耗服务器很大的资源**，对于本来就**资源不足**的丐版云服务器雪上加霜；
 - **操作问题**：VNC桌面登陆，复制、粘贴等基本操作都很麻烦，不太方便；
@@ -109,7 +109,7 @@
 那么，**如何在本地电脑使用IDE去调试远程机器上的代码**？
 
 - 现在我们可以在VSCode/Pycharm 进行远程开发相关配置；
-- VSCode/Pycharm 等IDE通常还集成了终端环境，方便我们操作服务器。
+- VSCode/Pycharm 等IDE通常还**集成了终端环境**，方便我们操作服务器。
 
 正式开始前，我们先**检查一下SSH安装情况**。
 
@@ -199,7 +199,7 @@
 
    - **打开远程文件**：File--->Open Folder--->指定文件夹路径，类似打开本地文件；
 
-   - **使用终端**：在VSCode下方`Terminal`一栏可进行命令行操作，可认为是一个ssh连接的界面，你可以在上面进行之前的所有操作；
+   - **使用终端**：在VSCode下方`Terminal`一栏可进行命令行操作，可认为是一个ssh连接的界面，你可以在上面进行之前`Xshell`等软件的所有操作；
 
      ![image-20211222132204902](https://blog-imgs-1256686095.cos.ap-guangzhou.myqcloud.com/image-20211222132204902.png)
 
@@ -302,7 +302,7 @@
 sudo pip3 install --upgrade pip  
 ```
 
-如果以下调用yum命令出错，请将以下两个文件的第一行改为`python2/ 2.7`。相关讨论可见：[issue#23](https://github.com/Wanghui-Huang/CQU_bigdata/issues/23) 。
+如果以下调用yum命令出错，请将以下两个文件的第一行改为`python2/2.7`。相关讨论可见：[issue#23](https://github.com/Wanghui-Huang/CQU_bigdata/issues/23) 。
 
 1. 修改urlgrabber-ext-down
 
@@ -351,7 +351,7 @@ sudo pip3 install --upgrade pip
 
   > 具体讨论可参考：@[issue#30](https://github.com/Wanghui-Huang/CQU_bigdata/issues/30) @[issue#21](https://github.com/Wanghui-Huang/CQU_bigdata/issues/21)
 
-  `pyechars` 模块保存图片需要安装相应**chromedriver和google-chrome** 。
+  `pyechars` 模块保存图片需要安装相应**chromedriver和google-chrome** ，并且**版本号要一一对应**。
 
   - 安装google-chrome
 
@@ -372,7 +372,7 @@ sudo pip3 install --upgrade pip
     google-chrome-stable --version
     ```
 
-    记录版本号后，去https://npm.taobao.org/mirrors/chromedriver/下载对应的驱动。下载方式：
+    记录版本号后，去https://npm.taobao.org/mirrors/chromedriver/ 下载对应的驱动。下载方式：
 
     - 推荐： `wget  下载链接` 形式 ，例如下载95版本的chromedriver
 
@@ -651,6 +651,10 @@ if __name__ == '__main__':
 
 2. 提交代码（单机模式）
 
+   ```shell
+   bin/spark-submit /home/hadoop/Experiment/Ex2_WordCount/WordCount.py
+   ```
+   
    > :warning: 如果启动了集群需要先关闭，因为**本次实验并非在集群环境下运行**：
    >
    > ```bash
@@ -664,10 +668,6 @@ if __name__ == '__main__':
    > ```
    >
    
-```bash
-   bin/spark-submit /home/hadoop/Experiment/Ex2_WordCount/WordCount.py
-```
-
 3. 查看结果
 
    你应该得到如下结果：
@@ -787,8 +787,6 @@ if __name__ == '__main__':
      pip3 install snapshot-selenium
      ```
 
-     
-
 4. 查看结果
 
    查看目录 `/home/hadoop/Experiment/Ex2_WordCount/results` ：
@@ -803,7 +801,7 @@ if __name__ == '__main__':
 
 【注】加分后总分不超过100分。
 
-|                        扩展要求                         |  加分  |                            |
+|                        扩展要求                         |  加分  |            备注            |
 | :-----------------------------------------------------: | :----: | :------------------------: |
 |                1. 使用分布式完成本次实验                |   +5   |       可参考ex3~ex4        |
 | 2. 扩充原有数据集（100M以上），或基于新的数据集进行实验 | +5~+10 | 根据数据量、质量、难度给分 |
