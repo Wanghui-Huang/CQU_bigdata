@@ -1,4 +1,4 @@
-<h1 align='center'>重庆大学计算机学院《大数据课程》</h1>
+<h1 align='center'>重庆大学计算机学院“大数据课程群”</h1>
 
 <h5 align='center'> Design by W.H. Huang | Direct by Prof. Feng</h5>
 
