@@ -6,7 +6,7 @@
 
 > :slightly_smiling_face: 指导设计 *@ Prof. Feng*  ;  具体设计 *@ W.H. Huang*
 
-重庆大学计算机学院“大数据课程群”实验及PPT：
+重庆大学计算机学院“大数据课程群”实验、PPT及优秀案例：
 
 - 开源地址：[CQU_bigdata](https://github.com/Wanghui-Huang/CQU_bigdata)
 
@@ -59,7 +59,7 @@
 |          | [Ex3_Kmeans](https://github.com/Wanghui-Huang/CQU_bigdata/blob/master/Experiment/Ex3/Ex3_Kmeans/ex3.md) | Spark分布式环境下基于`iris` 数据集完成K-Means聚类并进行可视化 |   10   |                                                   |
 |   ex4    | [Ex4_FaceRecognition](https://github.com/Wanghui-Huang/CQU_bigdata/blob/master/Experiment/Ex4/Ex4_FaceRecognition/ex4.md) |    Spark分布式环境下基于多层感知机模型完成高精度人脸分类     | 建设中 |                                                   |
 |          | [Ex4_CustomerForecast](https://github.com/Wanghui-Huang/CQU_bigdata/blob/master/Experiment/Ex4/Ex4_CustomerForecast/ex4.md) | Spark分布式环境下基于相关数据集完成淘宝回头客预测并进行可视化 |   9    |                                                   |
-|   ex5    | [Ex5_KnowledgeGraph](https://github.com/Wanghui-Huang/CQU_bigdata/blob/master/Experiment/Ex5/Ex5_KnowledgeGraph/ex5.md) |                         华为特色实验                         | 建设中 |                                                   |
+|   ex5    | [Ex5_KnowledgeGraph](https://github.com/Wanghui-Huang/CQU_bigdata/blob/master/Experiment/Ex5/Ex5_KnowledgeGraph/ex5.md) |                         华为特色实验                         |   10   |                                                   |
 
 ## PPT 设计
 
@@ -83,6 +83,17 @@ PPT 部分章节因为自身无法较好把握整体结构，最开始尚未完�
 |  7   |          大数据应用           | 介绍大数据相关应用，如：推荐系统、地震大数据、交通大数据、环境大数据等 |   √    |  54  |      |
 |  8   |        图计算与流计算         |               介绍大数据图计算、流计算相关知识               |   √    |  73  |      |
 
+## 优秀案例
+
+我们根据最近几年冯老师班大数据课程，择优选出了20+套优秀案例。每套案例组织格式如下：
+
+- 案例正文：包含摘要、版权信息、背景、正文、参考文献等信息；
+- 案例说明：案例教学指导手册；
+- 案例PPT：PPT供教师讲解、学生分享等；
+- 附件资源：包含案例完整的数据集、代码、说明等。
+
+所有案例，您可在[CQU_bigdata/CaseShow](https://github.com/Wanghui-Huang/CQU_bigdata/blob/master/) 目录下找到。
+
 ## 特别致谢
 
 以下致谢名单不分先后：
@@ -100,6 +111,11 @@ PPT 部分章节因为自身无法较好把握整体结构，最开始尚未完�
 
 ## 阶段小结
 
+- `2022/01/04` 
+
+  1. 更新ex5
+  2. 新增优秀案例20+套
+  
 - `2021/12/22` 
 
   - 实验修改
@@ -120,6 +136,7 @@ PPT 部分章节因为自身无法较好把握整体结构，最开始尚未完�
     - PPT修改
     - 文档整体结构修整
     - ...
+  
 - `2020/09/17` 
 
   - 课程PPT和实验已正式投入使用，所有参加该门课程的同学都可一起加入完善。
