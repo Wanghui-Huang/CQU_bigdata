@@ -13,12 +13,12 @@ payload = {
                     "password": {
                         "user": {
                         # name值为你的IAM账号名
-                            "name": "hw07084543",
+                            "name": ,
                             # password值为你的IAM密码
-                            "password": "riguangyu1996.",
+                            "password": ,
                             "domain": {
                             # name值为你的主账号的账号名
-                                "name": "hw07084543"
+                                "name": 
                             }
                         }
                     }
@@ -26,7 +26,7 @@ payload = {
                 "scope": {
                     "project": {
                     # name值为你的项目ID
-                        "name": "cn-north-4"
+                        "name": 
                     }
                 }
             }
