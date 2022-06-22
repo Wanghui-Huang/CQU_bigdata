@@ -4,7 +4,7 @@ Hi！我们精选了20+套教学案例，给大家展示近年来冯老师大数
 
 下面是所有案例的简要介绍，您可按需浏览&下载需要的案例（<u>请保留版权信息</u>）。
 
-- [注1]：附件资源已统一上传到百度云盘：[CASE SHOW--code: 2022](https://pan.baidu.com/s/1ahIfWO3vCpCGwvHPk1ZOpw) 
+- [注1]：附件资源已统一上传到百度云盘：[CASE SHOW--code: 2022](https://pan.baidu.com/s/1BoFK9D2V2_ucHpIVoeZkXg) 
 
 案例速览。
 
