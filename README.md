@@ -92,7 +92,7 @@ PPT 部分章节因为自身无法较好把握整体结构，最开始尚未完�
 - 案例PPT：PPT供教师讲解、学生分享等；
 - 附件资源：包含案例完整的数据集、代码、说明等。
 
-所有案例，您可在[CQU_bigdata/CaseShow](https://github.com/Wanghui-Huang/CQU_bigdata/blob/master/) 目录下找到。
+所有案例，您可在[CQU_bigdata/CaseShow](https://github.com/Wanghui-Huang/CQU_bigdata/tree/master/CaseShow) 目录下找到。
 
 ## 特别致谢
 
