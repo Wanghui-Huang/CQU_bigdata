@@ -99,7 +99,7 @@ PPT 部分章节因为自身无法较好把握整体结构，最开始尚未完�
 以下致谢名单不分先后：
 
 - [YangYiming919](https://github.com/YangYiming919) ，2018级本科生
-- [Rayquaza](https://github.com/marxoffice)
+- [Rayquaza](https://github.com/marxoffice)，2018级本科生
 - [white_windmills](https://github.com/leexinhao) ，2019级本科生
 - [Hongcheng-Gao](https://github.com/Hongcheng-Gao)   ，2019级本科生
 - [Tan Yong](https://github.com/a-fly-fly-bird) ，2019级本科生
