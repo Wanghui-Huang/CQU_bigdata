@@ -73,4 +73,4 @@
 
 ## 致谢
 
-特别感谢@[2018级--朱海龙]() 同学，对建设本文档的贡献。朱海龙同学同时是2020年优秀本科生课设获得者。
+特别感谢[Rayquaza](https://github.com/marxoffice) 同学，对建设本文档的贡献。[Rayquaza](https://github.com/marxoffice)同时是2020年优秀本科生课设获得者。
